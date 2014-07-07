@@ -6,4 +6,4 @@ You can use Packer to automate the setup of vEOS nodes.  This process is current
 
 ##Getting Started
 
- * [vEOS (VMware) Installation Notes](https://github.com/arista-eosplus/packer-veos/blob/master/README.md)
+ * [vEOS (VMware) Installation Notes](https://github.com/arista-eosplus/packer-veos/blob/master/VMware/README.md)
