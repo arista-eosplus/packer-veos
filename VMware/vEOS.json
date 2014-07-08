@@ -34,6 +34,9 @@
             "en<enter><wait>",
             "write erase<enter><wait>",
             "y<enter><wait>",
+            "bash<enter><wait>",
+            "echo 0011.2233.4456 > /mnt/flash/system_mac_address<enter><wait>",
+            "exit<enter><wait>",
             "reload now<enter>"
           ],
           "type": "vmware-veos",

@@ -10,6 +10,7 @@ and setup the virtual networks as depicted in the diagram below.
 
 ###Prerequisites
 
+ * **VMware Fusion Professional** - These packer scripts utilize functions that are only available in VMware Fusion Professional.
  * **Packer** - If you do not have packer installed, follow the directions below:
     1. Download the appropriate binaries - http://www.packer.io/downloads.html
     2. Unzip and move to desired location eg ~/packer or /usr/local/share/ or /usr/local/bin/
@@ -19,7 +20,8 @@ and setup the virtual networks as depicted in the diagram below.
  * **vEOS Packer Plug-in**
     1. Download the custom [builder-vmware-veos](https://www.dropbox.com/s/7w57dyai1qgdd82/builder-vmware-veos) plug-in.
     2. Put this plug-in with all of the standard Packer executables.
-    3. Modify the ```.packerconfig``` file to add this plug-in.  If this file does not exist, create it in ```$HOME/.packerconfig``` (this is a location Packer will look for it). Add the following config to that file:
+    3. Make this plug-in executable: ```chmod +x builder-vmware-veos```
+    4. Modify the ```.packerconfig``` file to add this plug-in.  If this file does not exist, create it in ```$HOME/.packerconfig``` (this is a location Packer will look for it). Add the following config to that file:
     ```
     {
         "builders": {
@@ -31,7 +33,7 @@ and setup the virtual networks as depicted in the diagram below.
      * Aboot-veos-2.0.8.iso
      * vEOS-4.13.5F.vmdk
  * **Virtual Networks**
-     If you have not configured the vmnets described in the diagram above, you can run ```setup-fusion.sh``` to do this for you.  You can modify the script to only modify/create certain vmnets.
+     If you have not configured the vmnets described in the diagram above, you can run ```sudo ./setup-fusion.sh``` to do this for you.  You can modify the script to only modify/create certain vmnets.
      EG ```VMNETS=(2 3 4 5 6 7 9 10 11)```
 
 ##Creating vEOS Nodes for VMWare
