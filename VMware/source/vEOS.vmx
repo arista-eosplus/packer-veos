@@ -55,7 +55,7 @@ ide0:0.deviceType="cdrom-image"
 
 # Internal flash
 ide0:1.present="TRUE"
-ide0:1.fileName="vEOS-4.13.5F.vmdk"
+ide0:1.fileName="vEOS.vmdk"
 ide0:1.redo=""
 scsi0:0.filename = ""
 # External USB
