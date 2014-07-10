@@ -37,7 +37,7 @@ and setup the virtual networks as depicted in the diagram below.
      If you have not configured the vmnets described in the diagram above, you can run ```sudo ./setup-fusion.sh``` to do this for you.  You can modify the script to only modify/create certain vmnets.
      EG ```VMNETS=(2 3 4 5 6 7 9 10 11)```
 
-##Creating vEOS Nodes for VMWare
+##Creating vEOS Nodes for VMware
 1. ```cd``` to the ```vEOS/VMware``` directory.
 2. Place the files mentioned above into the correct directories. Your directory should look like:
 
