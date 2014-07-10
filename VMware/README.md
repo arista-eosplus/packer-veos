@@ -7,7 +7,7 @@ If you used [packer-ztpserver](https://github.com/arista-eosplus/packer-ztpserve
 The following procedure will create four vEOS nodes,
 and setup the virtual networks as depicted in the diagram below.
 
-![vEOS Networks](https://github.com/arista-eosplus/packer-veos/blob/master/gh-pages/images/vEOS-spine-leaf-vmware.jpg)
+![vEOS Networks](https://raw.githubusercontent.com/arista-eosplus/packer-veos/master/gh-pages/images/vEOS-spine-leaf-vmware.jpg)
 
 ###Prerequisites
 

@@ -7,7 +7,7 @@ you will have a set of demo files already on your server that complement the set
 The following procedure will create four vEOS nodes,
 and setup the virtual networks as depicted in the diagram below.
 
-![vEOS Networks](https://github.com/arista-eosplus/packer-veos/blob/master/gh-pages/images/vEOS-spine-leaf-vbox.jpg)
+![vEOS Networks](https://raw.githubusercontent.com/arista-eosplus/packer-veos/master/gh-pages/images/vEOS-spine-leaf-vbox.jpg)
 
 ###Prerequisites
 
