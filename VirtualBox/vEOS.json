@@ -1,0 +1,130 @@
+{
+   "builders": [
+      {
+          "boot_wait": "1m30s",
+          "boot_command" : [
+            "admin<enter><wait>",
+            "en<enter><wait>",
+            "write erase<enter><wait>",
+            "y<enter><wait>",
+            "bash<enter><wait>",
+            "echo 0011.2233.4455 > /mnt/flash/system_mac_address<enter><wait>",
+            "exit<enter>",
+            "reload now<enter>"
+          ],
+          "type": "virtualbox-veos",
+          "name" : "vEOS1",
+          "source_path": "source/vEOS.ovf",
+          "output_directory" : "vEOS1",
+          "ssh_username": "admin",
+          "vm_name":"vEOS-1",
+          "vboxmanage": [
+              [ "modifyvm","{{.Name}}","--name","vEOS-1" ],
+              [ "modifyvm","{{.Name}}","--memory","1024" ],
+              [ "modifyvm","{{.Name}}","--cpus","1" ],
+              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
+              [ "modifyvm","{{.Name}}","--nic2","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter2","vboxnet3" ],
+              [ "modifyvm","{{.Name}}","--nic3","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter3","vboxnet4" ],
+              [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet7" ]
+          ],
+          "shutdown_command":"bash reload now"
+      },
+      {
+          "boot_wait": "1m30s",
+          "boot_command" : [
+            "admin<enter><wait>",
+            "en<enter><wait>",
+            "write erase<enter><wait>",
+            "y<enter><wait>",
+            "bash<enter><wait>",
+            "echo 0011.2233.4456 > /mnt/flash/system_mac_address<enter><wait>",
+            "exit<enter>",
+            "reload now<enter>"
+          ],
+          "type": "virtualbox-veos",
+          "name" : "vEOS2",
+          "source_path": "source/vEOS.ovf",
+          "output_directory" : "vEOS2",
+          "ssh_username": "admin",
+          "vm_name":"vEOS-2",
+          "vboxmanage": [
+              [ "modifyvm","{{.Name}}","--name","vEOS-2" ],
+              [ "modifyvm","{{.Name}}","--memory","1024" ],
+              [ "modifyvm","{{.Name}}","--cpus","1" ],
+              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
+              [ "modifyvm","{{.Name}}","--nic2","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter2","vboxnet6" ],
+              [ "modifyvm","{{.Name}}","--nic3","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter3","vboxnet5" ],
+              [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet7" ]
+          ],
+          "shutdown_command":"bash reload now"
+      },
+      {
+          "boot_wait": "1m30s",
+          "boot_command" : [
+            "admin<enter><wait>",
+            "en<enter><wait>",
+            "write erase<enter><wait>",
+            "y<enter><wait>",
+            "reload now<enter>"
+          ],
+          "type": "virtualbox-veos",
+          "name" : "vEOS3",
+          "source_path": "source/vEOS.ovf",
+          "output_directory" : "vEOS3",
+          "ssh_username": "admin",
+          "vm_name":"vEOS-3",
+          "vboxmanage": [
+              [ "modifyvm","{{.Name}}","--name","vEOS-3" ],
+              [ "modifyvm","{{.Name}}","--memory","1024" ],
+              [ "modifyvm","{{.Name}}","--cpus","1" ],
+              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
+              [ "modifyvm","{{.Name}}","--nic2","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter2","vboxnet3" ],
+              [ "modifyvm","{{.Name}}","--nic3","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter3","vboxnet5" ],
+              [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet9" ]
+          ],
+          "shutdown_command":"bash reload now"
+      },
+      {
+          "boot_wait": "1m30s",
+          "boot_command" : [
+            "admin<enter><wait>",
+            "en<enter><wait>",
+            "write erase<enter><wait>",
+            "y<enter><wait>",
+            "reload now<enter>"
+          ],
+          "type": "virtualbox-veos",
+          "name" : "vEOS4",
+          "source_path": "source/vEOS.ovf",
+          "output_directory" : "vEOS4",
+          "ssh_username": "admin",
+          "vm_name":"vEOS-4",
+          "vboxmanage": [
+              [ "modifyvm","{{.Name}}","--name","vEOS-4" ],
+              [ "modifyvm","{{.Name}}","--memory","1024" ],
+              [ "modifyvm","{{.Name}}","--cpus","1" ],
+              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
+              [ "modifyvm","{{.Name}}","--nic2","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter2","vboxnet4" ],
+              [ "modifyvm","{{.Name}}","--nic3","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter3","vboxnet6" ],
+              [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet9" ]
+          ],
+          "shutdown_command":"bash reload now"
+      }
+   ]
+}
