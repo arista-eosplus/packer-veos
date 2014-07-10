@@ -32,7 +32,7 @@ and setup the virtual networks as depicted in the diagram below.
     ```
  * You will need to log into your Arista.com account to obtain the following files from https://www.arista.com/en/support/software-download:
      * Aboot-veos-2.0.8.iso
-     * vEOS-4.13.5M.vmdk or any release of your choice.  **Rename it vEOS.vmdk**.
+     * vEOS.vmdk (This can be any release of your choice, rename it to vEOS.vmdk)
  * **Virtual Networks**
      If you have not configured the vmnets described in the diagram above, you can run ```sudo ./setup-fusion.sh``` to do this for you.  You can modify the script to only modify/create certain vmnets.
      EG ```VMNETS=(2 3 4 5 6 7 9 10 11)```
