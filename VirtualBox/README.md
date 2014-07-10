@@ -21,7 +21,7 @@ and setup the virtual networks as depicted in the diagram below.
  * **vEOS Packer Plug-in**
     1. Download the custom [builder-virtualbox-veos](https://www.dropbox.com/s/pxiqtdckedevppq/builder-virtualbox-veos) plug-in.
     2. Put this plug-in with all of the standard Packer executables.
-    3. Make this plug-in executable: ```chmod +x builder-vmware-veos```
+    3. Make this plug-in executable: ```chmod +x builder-virtualbox-veos```
     4. Modify the ```.packerconfig``` file to add this plug-in.  If this file does not exist, create it in ```$HOME/.packerconfig``` (this is a location Packer will look for it). Add the following config to that file:
     ```
     {
