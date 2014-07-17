@@ -18,11 +18,14 @@ and setup the virtual networks as depicted in the diagram below.
     3. Set ENV variable (or just put Packer somewhere the ```PATH``` is already pointing - ```echo $PATH```)
         * EG: in ~/.bash_login, add ```PATH=$PATH:/path/to/packer/files```
     4. Run ```packer``` to make sure ```PATH``` is updated.
- * **vEOS Packer Plug-in**
-    1. Download the custom [builder-vmware-veos](https://www.dropbox.com/s/7w57dyai1qgdd82/builder-vmware-veos) plug-in.
-    2. Put this plug-in with all of the standard Packer executables.
-    3. Make this plug-in executable: ```chmod +x builder-vmware-veos```
-    4. Modify the ```.packerconfig``` file to add this plug-in.  If this file does not exist, create it in ```$HOME/.packerconfig``` (this is a location Packer will look for it). Add the following config to that file:
+ * **vEOS Packer plugin**
+    1. Download the custom vEOS-packer plugin for your platform
+        * Linux [amd64](https://www.dropbox.com/s/jbzggphvtnyivh4/builder-vmware-veos_linux_amd64.tar.gz) | [386](https://www.dropbox.com/s/idvjnccerlyzhyg/builder-vmware-veos_linux_386.tar.gz) | [arm](https://www.dropbox.com/s/ahn9rolkm1quaur/builder-vmware-veos_linux_arm.tar.gz)
+        * MacOSX [amd64](https://www.dropbox.com/s/n6jntdm5cdfjlup/builder-vmware-veos_darwin_amd64.zip) | [386](https://www.dropbox.com/s/x8yd388jtk5tm9r/builder-vmware-veos_darwin_386.zip)
+        * Windows [amd64](https://www.dropbox.com/s/icexa67o1uq6byn/builder-vmware-veos_windows_amd64.zip) | [386](https://www.dropbox.com/s/pm58fsf43106lnx/builder-vmware-veos_windows_386.zip)
+    2. Put this plugin with all of the standard Packer executables.
+    3. Make this plugin executable: ```chmod +x builder-vmware-veos```
+    4. Modify the ```.packerconfig``` file to add this plugin.  If this file does not exist, create it in ```$HOME/.packerconfig``` (this is a location Packer will look for it). Add the following config to that file:
     ```
     {
         "builders": {
