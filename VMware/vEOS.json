@@ -101,27 +101,6 @@
             "ethernet3.vnet" : "vmnet9"
           },
           "shutdown_command":"bash reload now"
-      },
-      {
-          "boot_wait": "1m30s",
-          "boot_command" : [
-            "admin<enter><wait>",
-            "en<enter><wait>",
-            "write erase<enter><wait>",
-            "y<enter><wait>",
-            "reload now<enter>"
-          ],
-          "type": "vmware-veos",
-          "name" : "vEOS-cvx",
-          "source_path": "source/vEOS.vmx",
-          "output_directory" : "vEOS-cvx",
-          "skip_compaction" : "TRUE",
-          "ssh_username": "admin",
-          "vmx_data" : {
-            "displayName" : "vEOS-cvx",
-            "ethernet0.vnet" : "vmnet2"
-          },
-          "shutdown_command":"bash reload now"
       }
    ]
 }
