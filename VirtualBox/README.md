@@ -4,7 +4,7 @@ Here is a way to automate vEOS node creation so that you can start testing ZTPSe
 If you used [packer-ztpserver](https://github.com/arista-eosplus/packer-ztpserver) to create your ztpserver,
 you will have a set of demo files already on your server that complement the setup below.
 
-The following procedure will create four vEOS nodes,
+The following procedure will create five vEOS nodes,
 and setup the virtual networks as depicted in the diagram below.
 
 ![vEOS Networks](https://raw.githubusercontent.com/arista-eosplus/packer-veos/master/gh-pages/images/vEOS-spine-leaf-vbox.jpg)
@@ -52,9 +52,10 @@ and setup the virtual networks as depicted in the diagram below.
               - vEOS.vmdk
               - Aboot-veos-2.0.8.iso
     ```
-3. The vEOS.json file contains unique configuration for four vEOS nodes - vEOS-1/2/3/4 as depicted above.
+3. The vEOS.json file contains unique configuration for four vEOS nodes - vEOS-1/2/3/4/cvx as depicted above.
     * You must build the nodes one at a time since each run requires vbox to import the existing ovf/vmdk. Run:
         * ```packer build --only=vEOS1 vEOS.json```
         * ```packer build --only=vEOS2 vEOS.json```
         * ```packer build --only=vEOS3 vEOS.json```
         * ```packer build --only=vEOS4 vEOS.json```
+        * ```packer build --only=vEOS-cvx vEOS.json```

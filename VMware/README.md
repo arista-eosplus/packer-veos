@@ -4,7 +4,7 @@ It can be time-consuming to get all of the vEOS VMs up, running and configured.
 Here is a way to automate that procedure so that you can start testing ZTPServer even faster.
 If you used [packer-ztpserver](https://github.com/arista-eosplus/packer-ztpserver) to create your ztpserver, you will have a set of demo files already on your server that complement the setup below.
 
-The following procedure will create four vEOS nodes,
+The following procedure will create five vEOS nodes,
 and setup the virtual networks as depicted in the diagram below.
 
 ![vEOS Networks](https://raw.githubusercontent.com/arista-eosplus/packer-veos/master/gh-pages/images/vEOS-spine-leaf-vmware.jpg)
@@ -53,7 +53,7 @@ and setup the virtual networks as depicted in the diagram below.
               - vEOS.vmdk
               - Aboot-veos-2.0.8.iso
     ```
-3. The vEOS.json file contains unique configuration for four vEOS nodes - vEOS-1/2/3/4 as depicted above.
+3. The vEOS.json file contains unique configuration for four vEOS nodes - vEOS-1/2/3/4/cvx as depicted above.
     * It requires a non-trivial amount of CPU/memory to turn up all three at the same time.  If you're feeling daring, run:
         * ```packer build vEOS.json```
     * If you'd like to build the nodes one at a time, run:
@@ -61,3 +61,4 @@ and setup the virtual networks as depicted in the diagram below.
         * ```packer build --only=vEOS2 vEOS.json```
         * ```packer build --only=vEOS3 vEOS.json```
         * ```packer build --only=vEOS4 vEOS.json```
+        * ```packer build --only=vEOS-cvx vEOS.json```
