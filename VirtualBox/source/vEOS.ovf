@@ -252,9 +252,6 @@
           <AttachedDevice type="HardDisk" port="0" device="0">
             <Image uuid="{3808aa77-0e9d-42cc-998a-e411f09445b5}"/>
           </AttachedDevice>
-          <AttachedDevice passthrough="false" type="DVD" port="0" device="1">
-            <Image uuid="{aae8ce53-5c83-4e86-b83e-e9608c97db00}"/>
-          </AttachedDevice>
         </StorageController>
       </StorageControllers>
     </vbox:Machine>
