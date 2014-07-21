@@ -63,7 +63,8 @@
               [ "modifyvm","{{.Name}}","--nic3","hostonly" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter3","vboxnet5" ],
               [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
-              [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet7" ]
+              [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet7" ],
+              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
           ],
           "shutdown_command":"bash reload now"
       },
@@ -93,7 +94,8 @@
               [ "modifyvm","{{.Name}}","--nic3","hostonly" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter3","vboxnet5" ],
               [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
-              [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet9" ]
+              [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet9" ],
+              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
           ],
           "shutdown_command":"bash reload now"
       },
@@ -123,7 +125,8 @@
               [ "modifyvm","{{.Name}}","--nic3","hostonly" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter3","vboxnet6" ],
               [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
-              [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet9" ]
+              [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet9" ],
+              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
           ],
           "shutdown_command":"bash reload now"
       },
@@ -150,7 +153,8 @@
               [ "modifyvm","{{.Name}}","--memory","1024" ],
               [ "modifyvm","{{.Name}}","--cpus","1" ],
               [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
-              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ]
+              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
+              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
           ],
           "shutdown_command":"bash reload now"
       }

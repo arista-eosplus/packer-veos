@@ -5,11 +5,11 @@
   </References>
   <DiskSection>
     <Info>List of the virtual disks used in the package</Info>
-    <Disk ovf:capacity="2147483648" ovf:diskId="vmdisk1" ovf:fileRef="file1" ovf:format="http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized" vbox:uuid="3808aa77-0e9d-42cc-998a-e411f09445b5"/>
+    <Disk ovf:capacity="2147483648" ovf:diskId="vmdisk1" ovf:fileRef="file1" ovf:format="http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized" vbox:uuid="3d27816d-4151-45ba-a419-c99eeb1b8b3f"/>
   </DiskSection>
   <NetworkSection>
     <Info>Logical networks used in the package</Info>
-    <Network ovf:name="HostOnly">
+    <Network ovf:name="NAT">
       <Description>Logical network used by this appliance.</Description>
     </Network>
   </NetworkSection>
@@ -72,22 +72,12 @@
         <rasd:ResourceType>23</rasd:ResourceType>
       </Item>
       <Item>
-        <rasd:AddressOnParent>3</rasd:AddressOnParent>
-        <rasd:AutomaticAllocation>false</rasd:AutomaticAllocation>
-        <rasd:Caption>sound</rasd:Caption>
-        <rasd:Description>Sound Card</rasd:Description>
-        <rasd:ElementName>sound</rasd:ElementName>
-        <rasd:InstanceID>6</rasd:InstanceID>
-        <rasd:ResourceSubType>ensoniq1371</rasd:ResourceSubType>
-        <rasd:ResourceType>35</rasd:ResourceType>
-      </Item>
-      <Item>
         <rasd:AddressOnParent>0</rasd:AddressOnParent>
         <rasd:Caption>disk1</rasd:Caption>
         <rasd:Description>Disk Image</rasd:Description>
         <rasd:ElementName>disk1</rasd:ElementName>
         <rasd:HostResource>/disk/vmdisk1</rasd:HostResource>
-        <rasd:InstanceID>7</rasd:InstanceID>
+        <rasd:InstanceID>6</rasd:InstanceID>
         <rasd:Parent>3</rasd:Parent>
         <rasd:ResourceType>17</rasd:ResourceType>
       </Item>
@@ -97,26 +87,26 @@
         <rasd:Caption>cdrom1</rasd:Caption>
         <rasd:Description>CD-ROM Drive</rasd:Description>
         <rasd:ElementName>cdrom1</rasd:ElementName>
-        <rasd:InstanceID>8</rasd:InstanceID>
+        <rasd:InstanceID>7</rasd:InstanceID>
         <rasd:Parent>3</rasd:Parent>
         <rasd:ResourceType>15</rasd:ResourceType>
       </Item>
       <Item>
         <rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
-        <rasd:Caption>Ethernet adapter on 'HostOnly'</rasd:Caption>
-        <rasd:Connection>HostOnly</rasd:Connection>
-        <rasd:ElementName>Ethernet adapter on 'HostOnly'</rasd:ElementName>
-        <rasd:InstanceID>9</rasd:InstanceID>
+        <rasd:Caption>Ethernet adapter on 'NAT'</rasd:Caption>
+        <rasd:Connection>NAT</rasd:Connection>
+        <rasd:ElementName>Ethernet adapter on 'NAT'</rasd:ElementName>
+        <rasd:InstanceID>8</rasd:InstanceID>
         <rasd:ResourceSubType>E1000</rasd:ResourceSubType>
         <rasd:ResourceType>10</rasd:ResourceType>
       </Item>
     </VirtualHardwareSection>
-    <vbox:Machine ovf:required="false" version="1.12-macosx" uuid="{3f6cb8f3-efce-4b8c-b386-4b30ddf432bd}" name="vEOS" OSType="Linux_64" snapshotFolder="Snapshots" lastStateChange="2014-06-16T18:24:43Z">
+    <vbox:Machine ovf:required="false" version="1.12-macosx" uuid="{d513a64c-da98-42f2-8315-3d1df329937d}" name="vEOS" OSType="Linux_64" snapshotFolder="Snapshots" lastStateChange="2014-07-21T18:18:46Z">
       <ovf:Info>Complete VirtualBox machine configuration in VirtualBox format</ovf:Info>
       <ExtraData>
         <ExtraDataItem name="GUI/LastCloseAction" value="PowerOff"/>
         <ExtraDataItem name="GUI/LastGuestSizeHint" value="720,400"/>
-        <ExtraDataItem name="GUI/LastNormalWindowPosition" value="636,415,720,421"/>
+        <ExtraDataItem name="GUI/LastNormalWindowPosition" value="487,185,720,421"/>
       </ExtraData>
       <Hardware version="2">
         <CPU count="1" hotplug="false">
@@ -140,10 +130,10 @@
         </Boot>
         <Display VRAMSize="12" monitorCount="1" accelerate3D="false" accelerate2DVideo="false"/>
         <VideoCapture/>
-        <RemoteDisplay enabled="false" authType="Null" authTimeout="5000"/>
+        <RemoteDisplay enabled="false" authType="Null"/>
         <BIOS>
           <ACPI enabled="true"/>
-          <IOAPIC enabled="true"/>
+          <IOAPIC enabled="false"/>
           <Logo fadeIn="true" fadeOut="true" displayTime="0"/>
           <BootMenu mode="MessageAndMenu"/>
           <TimeOffset value="0"/>
@@ -151,26 +141,14 @@
         </BIOS>
         <USBController enabled="true" enabledEhci="false"/>
         <Network>
-          <Adapter slot="0" enabled="true" MACAddress="080027895275" cable="true" speed="0" type="82540EM">
-            <DisabledModes>
-              <NAT>
-                <DNS pass-domain="true" use-proxy="false" use-host-resolver="false"/>
-                <Alias logging="false" proxy-only="false" use-same-ports="false"/>
-              </NAT>
-              <InternalNetwork name="intnet"/>
-              <NATNetwork name="NatNetwork"/>
-            </DisabledModes>
-            <HostOnlyInterface name="vboxnet2"/>
+          <Adapter slot="0" enabled="true" MACAddress="080027AF48BE" cable="true" speed="0" type="82540EM">
+            <DisabledModes/>
+            <NAT>
+              <DNS pass-domain="true" use-proxy="false" use-host-resolver="false"/>
+              <Alias logging="false" proxy-only="false" use-same-ports="false"/>
+            </NAT>
           </Adapter>
-          <Adapter slot="1" enabled="false" MACAddress="080027FEE735" cable="true" speed="0" type="82540EM">
-            <DisabledModes>
-              <NAT>
-                <DNS pass-domain="true" use-proxy="false" use-host-resolver="false"/>
-                <Alias logging="false" proxy-only="false" use-same-ports="false"/>
-              </NAT>
-            </DisabledModes>
-          </Adapter>
-          <Adapter slot="2" enabled="false" MACAddress="080027E7B43E" cable="true" speed="0" type="82540EM">
+          <Adapter slot="1" enabled="false" MACAddress="080027F3532E" cable="true" speed="0" type="82540EM">
             <DisabledModes>
               <NAT>
                 <DNS pass-domain="true" use-proxy="false" use-host-resolver="false"/>
@@ -178,7 +156,7 @@
               </NAT>
             </DisabledModes>
           </Adapter>
-          <Adapter slot="3" enabled="false" MACAddress="080027FEAEF1" cable="true" speed="0" type="82540EM">
+          <Adapter slot="2" enabled="false" MACAddress="080027A4DDD3" cable="true" speed="0" type="82540EM">
             <DisabledModes>
               <NAT>
                 <DNS pass-domain="true" use-proxy="false" use-host-resolver="false"/>
@@ -186,7 +164,7 @@
               </NAT>
             </DisabledModes>
           </Adapter>
-          <Adapter slot="4" enabled="false" MACAddress="080027DA49E9" cable="true" speed="0" type="82540EM">
+          <Adapter slot="3" enabled="false" MACAddress="080027DE1B3C" cable="true" speed="0" type="82540EM">
             <DisabledModes>
               <NAT>
                 <DNS pass-domain="true" use-proxy="false" use-host-resolver="false"/>
@@ -194,7 +172,7 @@
               </NAT>
             </DisabledModes>
           </Adapter>
-          <Adapter slot="5" enabled="false" MACAddress="0800278D888E" cable="true" speed="0" type="82540EM">
+          <Adapter slot="4" enabled="false" MACAddress="080027128869" cable="true" speed="0" type="82540EM">
             <DisabledModes>
               <NAT>
                 <DNS pass-domain="true" use-proxy="false" use-host-resolver="false"/>
@@ -202,7 +180,7 @@
               </NAT>
             </DisabledModes>
           </Adapter>
-          <Adapter slot="6" enabled="false" MACAddress="080027B9588D" cable="true" speed="0" type="82540EM">
+          <Adapter slot="5" enabled="false" MACAddress="080027C21667" cable="true" speed="0" type="82540EM">
             <DisabledModes>
               <NAT>
                 <DNS pass-domain="true" use-proxy="false" use-host-resolver="false"/>
@@ -210,7 +188,15 @@
               </NAT>
             </DisabledModes>
           </Adapter>
-          <Adapter slot="7" enabled="false" MACAddress="080027BDFB74" cable="true" speed="0" type="82540EM">
+          <Adapter slot="6" enabled="false" MACAddress="08002784111F" cable="true" speed="0" type="82540EM">
+            <DisabledModes>
+              <NAT>
+                <DNS pass-domain="true" use-proxy="false" use-host-resolver="false"/>
+                <Alias logging="false" proxy-only="false" use-same-ports="false"/>
+              </NAT>
+            </DisabledModes>
+          </Adapter>
+          <Adapter slot="7" enabled="false" MACAddress="08002748782F" cable="true" speed="0" type="82540EM">
             <DisabledModes>
               <NAT>
                 <DNS pass-domain="true" use-proxy="false" use-host-resolver="false"/>
@@ -227,7 +213,7 @@
           <Port slot="0" enabled="false" IOBase="0x378" IRQ="7"/>
           <Port slot="1" enabled="false" IOBase="0x378" IRQ="7"/>
         </LPT>
-        <AudioAdapter controller="AC97" driver="CoreAudio" enabled="true"/>
+        <AudioAdapter controller="AC97" driver="CoreAudio" enabled="false"/>
         <RTC localOrUTC="UTC"/>
         <SharedFolders/>
         <Clipboard mode="Disabled"/>
@@ -244,13 +230,16 @@
         </EmulatedUSB>
         <Guest memoryBalloonSize="0"/>
         <GuestProperties>
-          <GuestProperty name="/VirtualBox/HostInfo/GUI/LanguageID" value="en_US" timestamp="1402941745357925000" flags=""/>
+          <GuestProperty name="/VirtualBox/HostInfo/GUI/LanguageID" value="en_US" timestamp="1405966672640554000" flags=""/>
         </GuestProperties>
       </Hardware>
       <StorageControllers>
         <StorageController name="IDE" type="PIIX4" PortCount="2" useHostIOCache="true" Bootable="true">
           <AttachedDevice type="HardDisk" port="0" device="0">
-            <Image uuid="{3808aa77-0e9d-42cc-998a-e411f09445b5}"/>
+            <Image uuid="{3d27816d-4151-45ba-a419-c99eeb1b8b3f}"/>
+          </AttachedDevice>
+          <AttachedDevice passthrough="false" type="DVD" port="0" device="1">
+            <Image uuid="{0fbf7006-6c85-45a1-9615-40329055b65c}"/>
           </AttachedDevice>
         </StorageController>
       </StorageControllers>
