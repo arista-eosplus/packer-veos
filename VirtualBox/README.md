@@ -53,9 +53,13 @@ and setup the virtual networks as depicted in the diagram below.
               - Aboot-veos-2.0.8.iso
     ```
 3. The vEOS.json file contains unique configuration for four vEOS nodes - vEOS-1/2/3/4/cvx as depicted above.
-    * You must build the nodes one at a time since each run requires vbox to import the existing ovf/vmdk. Run:
-        * ```packer build --only=vEOS1 vEOS.json```
-        * ```packer build --only=vEOS2 vEOS.json```
-        * ```packer build --only=vEOS3 vEOS.json```
-        * ```packer build --only=vEOS4 vEOS.json```
-        * ```packer build --only=vEOS-cvx vEOS.json```
+    * You must build the nodes one at a time since each run requires vbox to import the existing ovf/vmdk.
+    >**NOTE:** There are times that the vEOS node does not boot properly and gets stuck at the 'starting udev.'  If this occurs, it is best to cancel (ctrl-c) the build and start again.
+        * Either run:
+            * ```packer build --parallel=false vEOS.json```
+        * or run:
+            * ```packer build --only=vEOS1 vEOS.json```
+            * ```packer build --only=vEOS2 vEOS.json```
+            * ```packer build --only=vEOS3 vEOS.json```
+            * ```packer build --only=vEOS4 vEOS.json```
+            * ```packer build --only=vEOS-cvx vEOS.json```
