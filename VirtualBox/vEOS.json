@@ -29,7 +29,8 @@
               [ "modifyvm","{{.Name}}","--nic3","hostonly" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter3","vboxnet4" ],
               [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
-              [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet7" ]
+              [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet7" ],
+              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
           ],
           "shutdown_command":"bash reload now"
       },
