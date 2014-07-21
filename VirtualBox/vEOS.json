@@ -1,7 +1,7 @@
 {
    "builders": [
       {
-          "boot_wait": "1m30s",
+          "boot_wait": "2m30s",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
@@ -34,7 +34,7 @@
           "shutdown_command":"bash reload now"
       },
       {
-          "boot_wait": "1m30s",
+          "boot_wait": "2m30s",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
@@ -67,7 +67,7 @@
           "shutdown_command":"bash reload now"
       },
       {
-          "boot_wait": "1m30s",
+          "boot_wait": "2m30s",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
@@ -97,7 +97,7 @@
           "shutdown_command":"bash reload now"
       },
       {
-          "boot_wait": "1m30s",
+          "boot_wait": "2m30s",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
@@ -127,7 +127,7 @@
           "shutdown_command":"bash reload now"
       },
       {
-          "boot_wait": "1m30s",
+          "boot_wait": "2m30s",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
