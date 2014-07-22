@@ -25,7 +25,7 @@ and setup the virtual networks as depicted in the diagram below.
         * Windows [amd64](https://www.dropbox.com/s/icexa67o1uq6byn/builder-vmware-veos_windows_amd64.zip) | [386](https://www.dropbox.com/s/pm58fsf43106lnx/builder-vmware-veos_windows_386.zip)
     2. Put this plugin with all of the standard Packer executables.
     3. Make this plugin executable: ```chmod +x builder-vmware-veos```
-    4. Modify the ```.packerconfig``` file to add this plugin.  If this file does not exist, create it in ```$HOME/.packerconfig``` (this is a location Packer will look for it). Add the following config to that file:
+    4. Modify the ```.packerconfig```(linux/OSX) or ```packer.config```(Windows) file to add this plugin.  If this file does not exist, create it in ```$HOME/.packerconfig``` or ```%APPDATA%/packer.config``` (this is a location Packer will look for it). Add the following config to that file:
     ```
     {
         "builders": {
