@@ -41,7 +41,8 @@ and setup the virtual networks as depicted in the diagram below.
      EG ```VMNETS=(2 3 4 5 6 7 9 10 11)```
 
 ##Creating vEOS Nodes for VMware
-1. ```cd``` to the ```vEOS/VMware``` directory.
+1. Retrieve the packer-veos files [here](https://github.com/arista-eosplus/packer-veos/archive/master.zip) or use ```git clone https://github.com/arista-eosplus/packer-veos.git```
+    1. ```cd packer-veos/VMware```
 2. Place the files mentioned above into the correct directories. Your directory should look like:
 
     ```
@@ -54,9 +55,11 @@ and setup the virtual networks as depicted in the diagram below.
               - Aboot-veos-2.0.8.iso
     ```
 3. The vEOS.json file contains unique configuration for four vEOS nodes - vEOS-1/2/3/4/cvx as depicted above.
-    * It requires a non-trivial amount of CPU/memory to turn up all three at the same time.  If you're feeling daring, run:
+    * It requires a non-trivial amount of CPU/memory to turn up all five at the same time.  If you're feeling daring, run:
         * ```packer build vEOS.json```
-    * If you'd like to build the nodes one at a time, run:
+    * If you would like to build all nodes sequentially, run:
+        * ```packer build --parallel=false vEOS.json```
+    * If you would like to build only select nodes, run:
         * ```packer build --only=vEOS1 vEOS.json```
         * ```packer build --only=vEOS2 vEOS.json```
         * ```packer build --only=vEOS3 vEOS.json```

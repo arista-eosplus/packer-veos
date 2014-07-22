@@ -40,7 +40,8 @@ and setup the virtual networks as depicted in the diagram below.
      If you have not configured the vboxnets described in the diagram above, you can run ```./setup-vbox.sh``` to do this for you.
 
 ##Creating vEOS Nodes for VirtualBox
-1. ```cd``` to the ```vEOS/VirtualBox``` directory.
+1. Retrieve the packer-veos files [here](https://github.com/arista-eosplus/packer-veos/archive/master.zip) or use ```git clone https://github.com/arista-eosplus/packer-veos.git```
+    1. ```cd packer-veos/Virtualbox```
 2. Place the files mentioned above into the correct directories. Your directory should look like:
 
     ```
