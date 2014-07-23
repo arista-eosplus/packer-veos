@@ -11,7 +11,7 @@ and setup the virtual networks as depicted in the diagram below.
 
 ###Prerequisites
 
- * **VirtualBox**
+ * **VirtualBox**The following procedure was tested using VirtualBox 4.3.12. **This does not work on Windows with 4.3.14**.
  * **Packer** - If you do not have packer installed, follow the directions below:
     1. Download the appropriate binaries - http://www.packer.io/downloads.html
     2. Unzip and move to desired location eg ~/packer or /usr/local/share/ or /usr/local/bin/
@@ -39,7 +39,7 @@ and setup the virtual networks as depicted in the diagram below.
  * **Virtual Networks**
      If you have not configured the vboxnets described in the diagram above, you can run ```./setup-vbox.sh``` to do this for you.
 
-##Creating vEOS Nodes for VirtualBox
+##Creating vEOS Nodes for VirtualBox (Mac OSX and Linux)
 1. Retrieve the packer-veos files [here](https://github.com/arista-eosplus/packer-veos/archive/master.zip) or use ```git clone https://github.com/arista-eosplus/packer-veos.git```
     1. ```cd packer-veos/Virtualbox```
 2. Place the files mentioned above into the correct directories. Your directory should look like:
@@ -48,6 +48,7 @@ and setup the virtual networks as depicted in the diagram below.
     vEOS
        /VirtualBox
           - vEOS.json
+          - vEOS-windows.json
           /source
               - vEOS.ovf
               - vEOS.vmdk
@@ -64,3 +65,30 @@ and setup the virtual networks as depicted in the diagram below.
             * ```packer build --only=vEOS3 vEOS.json```
             * ```packer build --only=vEOS4 vEOS.json```
             * ```packer build --only=vEOS-cvx vEOS.json```
+
+##Creating vEOS Nodes for VirtualBox (Windows)
+1. Retrieve the packer-veos files [here](https://github.com/arista-eosplus/packer-veos/archive/master.zip) or use ```git clone https://github.com/arista-eosplus/packer-veos.git```
+    1. ```cd packer-veos/Virtualbox```
+2. Place the files mentioned above into the correct directories. Your directory should look like:
+
+    ```
+    vEOS
+       /VirtualBox
+          - vEOS.json
+          - vEOS-windows.json
+          /source
+              - vEOS.ovf
+              - vEOS.vmdk
+              - Aboot-veos-2.0.8.iso
+    ```
+3. The vEOS.json file contains unique configuration for four vEOS nodes - vEOS-1/2/3/4/cvx as depicted above.
+    * You must build the nodes one at a time since each run requires vbox to import the existing ovf/vmdk.
+    >**NOTE:** There are times that the vEOS node does not boot properly and gets stuck at the 'starting udev.'  If this occurs, it is best to cancel (ctrl-c) the build and start again.
+        * Either run:
+            * ```packer build --parallel=false vEOS-windows.json```
+        * or run:
+            * ```packer build --only=vEOS1 vEOS-windows.json```
+            * ```packer build --only=vEOS2 vEOS-windows.json```
+            * ```packer build --only=vEOS3 vEOS-windows.json```
+            * ```packer build --only=vEOS4 vEOS-windows.json```
+            * ```packer build --only=vEOS-cvx vEOS-windows.json```

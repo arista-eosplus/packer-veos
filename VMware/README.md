@@ -37,8 +37,8 @@ and setup the virtual networks as depicted in the diagram below.
      * Aboot-veos-2.0.8.iso
      * vEOS.vmdk (This can be any release of your choice, rename it to vEOS.vmdk)
  * **Virtual Networks**
-     If you have not configured the vmnets described in the diagram above, you can run ```sudo ./setup-fusion.sh``` to do this for you.  You can modify the script to only modify/create certain vmnets.
-     EG ```VMNETS=(2 3 4 5 6 7 9 10 11)```
+     If you have not configured the vmnets described in the diagram above, you can run ```sudo ./setup-fusion.sh``` to do this for you. Note that VMWare should be started when you run this command.  You can modify the script to only modify/create certain vmnets.
+     EG ```VMNETS=(2 3 4 5 6 7 9 10 11)```.  If you are using VMware Workstation, you can quickly create these vmnets using the vmnetcfg utility.
 
 ##Creating vEOS Nodes for VMware
 1. Retrieve the packer-veos files [here](https://github.com/arista-eosplus/packer-veos/archive/master.zip) or use ```git clone https://github.com/arista-eosplus/packer-veos.git```
