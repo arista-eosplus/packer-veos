@@ -5,7 +5,7 @@
   </References>
   <DiskSection>
     <Info>List of the virtual disks used in the package</Info>
-    <Disk ovf:capacity="2147483648" ovf:diskId="vmdisk1" ovf:fileRef="file1" ovf:format="http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized" vbox:uuid="3d27816d-4151-45ba-a419-c99eeb1b8b3f"/>
+    <Disk ovf:capacity="2147483648" ovf:diskId="vmdisk1" ovf:fileRef="file1" ovf:format="http://www.vmware.com/interfaces/specifications/vmdk.html#streamOptimized" vbox:uuid="1974a7e6-dc04-403a-a840-2adb27fb7f88"/>
   </DiskSection>
   <NetworkSection>
     <Info>Logical networks used in the package</Info>
@@ -38,12 +38,12 @@
       </Item>
       <Item>
         <rasd:AllocationUnits>MegaBytes</rasd:AllocationUnits>
-        <rasd:Caption>1024 MB of memory</rasd:Caption>
+        <rasd:Caption>2048 MB of memory</rasd:Caption>
         <rasd:Description>Memory Size</rasd:Description>
-        <rasd:ElementName>1024 MB of memory</rasd:ElementName>
+        <rasd:ElementName>2048 MB of memory</rasd:ElementName>
         <rasd:InstanceID>2</rasd:InstanceID>
         <rasd:ResourceType>4</rasd:ResourceType>
-        <rasd:VirtualQuantity>1024</rasd:VirtualQuantity>
+        <rasd:VirtualQuantity>2048</rasd:VirtualQuantity>
       </Item>
       <Item>
         <rasd:Address>0</rasd:Address>
@@ -101,12 +101,15 @@
         <rasd:ResourceType>10</rasd:ResourceType>
       </Item>
     </VirtualHardwareSection>
-    <vbox:Machine ovf:required="false" version="1.12-macosx" uuid="{d513a64c-da98-42f2-8315-3d1df329937d}" name="vEOS" OSType="Linux_64" snapshotFolder="Snapshots" lastStateChange="2014-07-21T18:18:46Z">
+    <vbox:Machine ovf:required="false" version="1.12-macosx" uuid="{9585c7fd-bbca-455d-ad12-fbd549ac8bec}" name="vEOS" OSType="Linux_64" snapshotFolder="Snapshots" lastStateChange="2014-07-24T21:01:59Z">
       <ovf:Info>Complete VirtualBox machine configuration in VirtualBox format</ovf:Info>
       <ExtraData>
         <ExtraDataItem name="GUI/LastCloseAction" value="PowerOff"/>
         <ExtraDataItem name="GUI/LastGuestSizeHint" value="720,400"/>
-        <ExtraDataItem name="GUI/LastNormalWindowPosition" value="487,185,720,421"/>
+        <ExtraDataItem name="GUI/LastNormalWindowPosition" value="866,204,720,421"/>
+        <ExtraDataItem name="GUI/MiniToolBarAlignment" value="bottom"/>
+        <ExtraDataItem name="GUI/SaveMountedAtRuntime" value="yes"/>
+        <ExtraDataItem name="GUI/ShowMiniToolBar" value="yes"/>
       </ExtraData>
       <Hardware version="2">
         <CPU count="1" hotplug="false">
@@ -118,7 +121,7 @@
           <HardwareVirtExLargePages enabled="true"/>
           <HardwareVirtForce enabled="false"/>
         </CPU>
-        <Memory RAMSize="1024" PageFusion="false"/>
+        <Memory RAMSize="2048" PageFusion="false"/>
         <HID Pointing="USBTablet" Keyboard="PS2Keyboard"/>
         <HPET enabled="false"/>
         <Chipset type="PIIX3"/>
@@ -130,7 +133,7 @@
         </Boot>
         <Display VRAMSize="12" monitorCount="1" accelerate3D="false" accelerate2DVideo="false"/>
         <VideoCapture/>
-        <RemoteDisplay enabled="false" authType="Null"/>
+        <RemoteDisplay enabled="false" authType="Null" authTimeout="5000"/>
         <BIOS>
           <ACPI enabled="true"/>
           <IOAPIC enabled="false"/>
@@ -142,7 +145,10 @@
         <USBController enabled="true" enabledEhci="false"/>
         <Network>
           <Adapter slot="0" enabled="true" MACAddress="080027AF48BE" cable="true" speed="0" type="82540EM">
-            <DisabledModes/>
+            <DisabledModes>
+              <InternalNetwork name="intnet"/>
+              <NATNetwork name="NatNetwork"/>
+            </DisabledModes>
             <NAT>
               <DNS pass-domain="true" use-proxy="false" use-host-resolver="false"/>
               <Alias logging="false" proxy-only="false" use-same-ports="false"/>
@@ -230,16 +236,13 @@
         </EmulatedUSB>
         <Guest memoryBalloonSize="0"/>
         <GuestProperties>
-          <GuestProperty name="/VirtualBox/HostInfo/GUI/LanguageID" value="en_US" timestamp="1405966672640554000" flags=""/>
+          <GuestProperty name="/VirtualBox/HostInfo/GUI/LanguageID" value="en_US" timestamp="1406235576074534000" flags=""/>
         </GuestProperties>
       </Hardware>
       <StorageControllers>
         <StorageController name="IDE" type="PIIX4" PortCount="2" useHostIOCache="true" Bootable="true">
           <AttachedDevice type="HardDisk" port="0" device="0">
-            <Image uuid="{3d27816d-4151-45ba-a419-c99eeb1b8b3f}"/>
-          </AttachedDevice>
-          <AttachedDevice passthrough="false" type="DVD" port="0" device="1">
-            <Image uuid="{0fbf7006-6c85-45a1-9615-40329055b65c}"/>
+            <Image uuid="{1974a7e6-dc04-403a-a840-2adb27fb7f88}"/>
           </AttachedDevice>
         </StorageController>
       </StorageControllers>
