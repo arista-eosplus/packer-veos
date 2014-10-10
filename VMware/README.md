@@ -54,7 +54,7 @@ and setup the virtual networks as depicted in the diagram below.
               - vEOS.vmdk
               - Aboot-veos-2.0.8.iso
     ```
-3. The vEOS.json file contains unique configuration for four vEOS nodes - vEOS-1/2/3/4/cvx as depicted above.
+3. The vEOS.json file contains unique configuration for four vEOS nodes - vEOS-1/2/3/4 as depicted above.
     * It requires a non-trivial amount of CPU/memory to turn up all five at the same time.  If you're feeling daring, run:
         * ```packer build vEOS.json```
     * If you would like to build all nodes sequentially, run:
@@ -64,4 +64,3 @@ and setup the virtual networks as depicted in the diagram below.
         * ```packer build --only=vEOS2 vEOS.json```
         * ```packer build --only=vEOS3 vEOS.json```
         * ```packer build --only=vEOS4 vEOS.json```
-        * ```packer build --only=vEOS-cvx vEOS.json```

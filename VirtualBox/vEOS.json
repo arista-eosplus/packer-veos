@@ -146,34 +146,5 @@
           ],
           "shutdown_command":"bash reload now"
       },
-      {
-          "boot_wait": "2m30s",
-          "boot_command" : [
-            "admin<enter><wait>",
-            "en<enter><wait>",
-            "write erase<enter><wait>",
-            "y<enter><wait>",
-            "bash<enter><wait>",
-            "echo 0011.2233.4457 > /mnt/flash/system_mac_address<enter><wait>",
-            "exit<enter>",
-            "reload now<enter>"
-          ],
-          "type": "virtualbox-veos",
-          "name" : "vEOS-cvx",
-          "source_path": "source/vEOS.ovf",
-          "output_directory" : "vEOS-cvx",
-          "ssh_username": "admin",
-          "vm_name":"vEOS-cvx",
-          "vboxmanage": [
-              [ "modifyvm","{{.Name}}","--name","vEOS-cvx" ],
-              [ "modifyvm","{{.Name}}","--memory","2048" ],
-              [ "modifyvm","{{.Name}}","--cpus","1" ],
-              [ "modifyvm","{{.Name}}","--nicpromisc1","allow-all" ],
-              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
-              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
-              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
-          ],
-          "shutdown_command":"bash reload now"
-      }
    ]
 }
