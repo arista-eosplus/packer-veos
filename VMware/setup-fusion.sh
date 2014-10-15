@@ -3,7 +3,7 @@
 #Assume that we are using Fusion
 cd /Applications/VMware\ Fusion.app/Contents/Library/
 
-#Check the current status
+# Check the current status
 printf "Starting the VMware network setup....\n\nCurrent VMware Fusion current network setup\n-------------------------------------\n"
 ./vmnet-cli --status
 
