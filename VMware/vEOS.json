@@ -101,6 +101,6 @@
             "ethernet3.vnet" : "vmnet9"
           },
           "shutdown_command":"bash reload now"
-      },
+      }
    ]
 }
