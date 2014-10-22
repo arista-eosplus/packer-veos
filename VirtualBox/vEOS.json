@@ -145,6 +145,6 @@
               [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
           ],
           "shutdown_command":"bash reload now"
-      },
+      }
    ]
 }
