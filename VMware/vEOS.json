@@ -1,7 +1,11 @@
 {
+   "variables": {
+      "ram": "2048",
+      "boot_time":"2m30s"
+   },
    "builders": [
       {
-          "boot_wait": "2m30s",
+          "boot_wait": "{{user `boot_time`}}",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
@@ -9,26 +13,34 @@
             "y<enter><wait>",
             "bash<enter><wait>",
             "echo 0011.2233.4455 > /mnt/flash/system_mac_address<enter><wait>",
+            "sudo dhclient ma1<enter><wait>",
             "exit<enter><wait>",
-            "reload now<enter>"
+            "conf<enter>",
+            "username admin secret admin<enter><exit>"
           ],
-          "type": "vmware-veos",
+          "type": "vmware-vmx",
           "name" : "vEOS1",
           "source_path": "source/vEOS.vmx",
           "output_directory" : "vEOS1",
-          "skip_compaction" : "TRUE",
+          "skip_compaction":"True",
           "ssh_username": "admin",
+          "ssh_password": "admin",
+          "ssh_wait_timeout":"10m",
           "vmx_data" : {
             "displayName" : "vEOS-1",
-            "ethernet0.vnet" : "vmnet2",
+            "memsize": "{{user `ram`}}",
+            "ethernet0.connectionType" : "nat",
             "ethernet1.vnet" : "vmnet3",
             "ethernet2.vnet" : "vmnet4",
             "ethernet3.vnet" : "vmnet7"
           },
-          "shutdown_command":"bash reload now"
+          "vmx_data_post" :{
+            "ethernet0.connectionType" : "custom",
+            "ethernet0.vnet":"vmnet2"
+          }
       },
       {
-          "boot_wait": "2m30s",
+          "boot_wait": "{{user `boot_time`}}",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
@@ -36,71 +48,96 @@
             "y<enter><wait>",
             "bash<enter><wait>",
             "echo 0011.2233.4456 > /mnt/flash/system_mac_address<enter><wait>",
+            "sudo dhclient ma1<enter><wait>",
             "exit<enter><wait>",
-            "reload now<enter>"
+            "conf<enter>",
+            "username admin secret admin<enter><exit>"
           ],
-          "type": "vmware-veos",
+          "type": "vmware-vmx",
           "name" : "vEOS2",
           "source_path": "source/vEOS.vmx",
           "output_directory" : "vEOS2",
           "skip_compaction" : "TRUE",
           "ssh_username": "admin",
+          "ssh_password": "admin",
           "vmx_data" : {
             "displayName" : "vEOS-2",
-            "ethernet0.vnet" : "vmnet2",
+            "memsize": "{{user `ram`}}",
+            "ethernet0.connectionType" : "nat",
             "ethernet1.vnet" : "vmnet5",
             "ethernet2.vnet" : "vmnet6",
             "ethernet3.vnet" : "vmnet7"
           },
-          "shutdown_command":"bash reload now"
+          "vmx_data_post" :{
+            "ethernet0.connectionType" : "custom",
+            "ethernet0.vnet":"vmnet2"
+          }
       },
       {
-          "boot_wait": "2m30s",
+          "boot_wait": "{{user `boot_time`}}",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
             "write erase<enter><wait>",
             "y<enter><wait>",
-            "reload now<enter>"
+            "bash<enter><wait>",
+            "sudo dhclient ma1<enter><wait>",
+            "exit<enter><wait>",
+            "conf<enter>",
+            "username admin secret admin<enter><exit>"
           ],
-          "type": "vmware-veos",
+          "type": "vmware-vmx",
           "name" : "vEOS3",
           "source_path": "source/vEOS.vmx",
           "output_directory" : "vEOS3",
           "skip_compaction" : "TRUE",
           "ssh_username": "admin",
+          "ssh_password": "admin",
           "vmx_data" : {
             "displayName" : "vEOS-3",
-            "ethernet0.vnet" : "vmnet2",
+            "memsize": "{{user `ram`}}",
+            "ethernet0.connectionType" : "nat",
             "ethernet1.vnet" : "vmnet3",
             "ethernet2.vnet" : "vmnet5",
             "ethernet3.vnet" : "vmnet9"
           },
-          "shutdown_command":"bash reload now"
+          "vmx_data_post" :{
+            "ethernet0.connectionType" : "custom",
+            "ethernet0.vnet":"vmnet2"
+          }
       },
       {
-          "boot_wait": "2m30s",
+          "boot_wait": "{{user `boot_time`}}",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
             "write erase<enter><wait>",
             "y<enter><wait>",
-            "reload now<enter>"
+            "bash<enter><wait>",
+            "sudo dhclient ma1<enter><wait>",
+            "exit<enter><wait>",
+            "conf<enter>",
+            "username admin secret admin<enter><exit>"
           ],
-          "type": "vmware-veos",
+          "type": "vmware-vmx",
           "name" : "vEOS4",
           "source_path": "source/vEOS.vmx",
           "output_directory" : "vEOS4",
           "skip_compaction" : "TRUE",
           "ssh_username": "admin",
+          "ssh_password": "admin",
           "vmx_data" : {
             "displayName" : "vEOS-4",
-            "ethernet0.vnet" : "vmnet2",
+            "memsize": "{{user `ram`}}",
+            "ethernet0.connectionType" : "nat",
             "ethernet1.vnet" : "vmnet4",
             "ethernet2.vnet" : "vmnet6",
             "ethernet3.vnet" : "vmnet9"
           },
-          "shutdown_command":"bash reload now"
+          "vmx_data_post" :{
+            "ethernet0.connectionType" : "custom",
+            "ethernet0.vnet":"vmnet2"
+          }
       }
    ]
 }
