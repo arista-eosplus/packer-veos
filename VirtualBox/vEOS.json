@@ -1,7 +1,11 @@
 {
+   "variables": {
+      "ram": "2048",
+      "boot_time":"2m30s"
+   },
    "builders": [
       {
-          "boot_wait": "2m30s",
+          "boot_wait": "{{user `boot_time`}}",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
@@ -9,21 +13,27 @@
             "y<enter><wait>",
             "bash<enter><wait>",
             "echo 0011.2233.4455 > /mnt/flash/system_mac_address<enter><wait>",
-            "exit<enter>",
-            "reload now<enter>"
+            "sudo dhclient ma1<enter><wait>",
+            "exit<enter><wait>",
+            "conf<enter>",
+            "aaa authorization exec default local<enter>",
+            "username admin privilege 15 role network-admin secret admin<enter><exit>"
           ],
-          "type": "virtualbox-veos",
+          "type": "virtualbox-ovf",
           "name" : "vEOS1",
           "source_path": "source/vEOS.ovf",
           "output_directory" : "vEOS1",
+          "export_opts" : [ "--iso" ],
+          "guest_additions_mode" : "disable",
+          "virtualbox_version_file" : "/tmp/",
           "ssh_username": "admin",
-          "vm_name":"vEOS-1",
+          "ssh_password": "admin",
+          "vm_name":"vEOS1",
           "vboxmanage": [
-              [ "modifyvm","{{.Name}}","--name","vEOS-1" ],
-              [ "modifyvm","{{.Name}}","--memory","2048" ],
+              [ "modifyvm","{{.Name}}","--name","vEOS1" ],
+              [ "modifyvm","{{.Name}}","--memory","{{user `ram`}}" ],
               [ "modifyvm","{{.Name}}","--cpus","1" ],
-              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
-              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
+              [ "modifyvm","{{.Name}}","--nic1","nat" ],
               [ "modifyvm","{{.Name}}","--nicpromisc1","allow-all" ],
               [ "modifyvm","{{.Name}}","--nic2","hostonly" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter2","vboxnet3" ],
@@ -34,12 +44,16 @@
               [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet7" ],
               [ "modifyvm","{{.Name}}","--nicpromisc4","allow-all" ],
-              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
+              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","1","--device","0","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
           ],
-          "shutdown_command":"bash reload now"
+          "vboxmanage_post": [
+              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
+              [ "modifyvm","{{.Name}}","--nicpromisc1","allow-all" ]
+          ]
       },
       {
-          "boot_wait": "2m30s",
+          "boot_wait": "{{user `boot_time`}}",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
@@ -47,22 +61,28 @@
             "y<enter><wait>",
             "bash<enter><wait>",
             "echo 0011.2233.4456 > /mnt/flash/system_mac_address<enter><wait>",
-            "exit<enter>",
-            "reload now<enter>"
+            "sudo dhclient ma1<enter><wait>",
+            "exit<enter><wait>",
+            "conf<enter>",
+            "aaa authorization exec default local<enter>",
+            "username admin privilege 15 role network-admin secret admin<enter><exit>"
           ],
-          "type": "virtualbox-veos",
+          "type": "virtualbox-ovf",
           "name" : "vEOS2",
           "source_path": "source/vEOS.ovf",
           "output_directory" : "vEOS2",
+          "export_opts" : [ "--iso" ],
+          "guest_additions_mode" : "disable",
+          "virtualbox_version_file" : "/tmp/",
           "ssh_username": "admin",
-          "vm_name":"vEOS-2",
+          "ssh_password": "admin",
+          "vm_name":"vEOS2",
           "vboxmanage": [
-              [ "modifyvm","{{.Name}}","--name","vEOS-2" ],
-              [ "modifyvm","{{.Name}}","--memory","2048" ],
+              [ "modifyvm","{{.Name}}","--name","vEOS2" ],
+              [ "modifyvm","{{.Name}}","--memory","{{user `ram`}}" ],
               [ "modifyvm","{{.Name}}","--cpus","1" ],
-              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
+              [ "modifyvm","{{.Name}}","--nic1","nat" ],
               [ "modifyvm","{{.Name}}","--nicpromisc1","allow-all" ],
-              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
               [ "modifyvm","{{.Name}}","--nic2","hostonly" ],
               [ "modifyvm","{{.Name}}","--nicpromisc2","allow-all" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter2","vboxnet5" ],
@@ -74,30 +94,42 @@
               [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet7" ],
               [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
           ],
-          "shutdown_command":"bash reload now"
+          "vboxmanage_post": [
+              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
+              [ "modifyvm","{{.Name}}","--nicpromisc1","allow-all" ]
+          ]
       },
       {
-          "boot_wait": "2m30s",
+          "boot_wait": "{{user `boot_time`}}",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
             "write erase<enter><wait>",
             "y<enter><wait>",
-            "reload now<enter>"
+            "bash<enter><wait>",
+            "sudo dhclient ma1<enter><wait>",
+            "exit<enter><wait>",
+            "conf<enter>",
+            "aaa authorization exec default local<enter>",
+            "username admin privilege 15 role network-admin secret admin<enter><exit>"
           ],
-          "type": "virtualbox-veos",
+          "type": "virtualbox-ovf",
           "name" : "vEOS3",
           "source_path": "source/vEOS.ovf",
           "output_directory" : "vEOS3",
+          "export_opts" : [ "--iso" ],
+          "guest_additions_mode" : "disable",
+          "virtualbox_version_file" : "/tmp/",
           "ssh_username": "admin",
-          "vm_name":"vEOS-3",
+          "ssh_password": "admin",
+          "vm_name":"vEOS3",
           "vboxmanage": [
-              [ "modifyvm","{{.Name}}","--name","vEOS-3" ],
-              [ "modifyvm","{{.Name}}","--memory","2048" ],
+              [ "modifyvm","{{.Name}}","--name","vEOS3" ],
+              [ "modifyvm","{{.Name}}","--memory","{{user `ram`}}" ],
               [ "modifyvm","{{.Name}}","--cpus","1" ],
-              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
+              [ "modifyvm","{{.Name}}","--nic1","nat" ],
               [ "modifyvm","{{.Name}}","--nicpromisc1","allow-all" ],
-              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
               [ "modifyvm","{{.Name}}","--nic2","hostonly" ],
               [ "modifyvm","{{.Name}}","--nicpromisc2","allow-all" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter2","vboxnet3" ],
@@ -109,30 +141,42 @@
               [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet9" ],
               [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
           ],
-          "shutdown_command":"bash reload now"
+          "vboxmanage_post": [
+              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
+              [ "modifyvm","{{.Name}}","--nicpromisc1","allow-all" ]
+          ]
       },
       {
-          "boot_wait": "2m30s",
+          "boot_wait": "{{user `boot_time`}}",
           "boot_command" : [
             "admin<enter><wait>",
             "en<enter><wait>",
             "write erase<enter><wait>",
             "y<enter><wait>",
-            "reload now<enter>"
+            "bash<enter><wait>",
+            "sudo dhclient ma1<enter><wait>",
+            "exit<enter><wait>",
+            "conf<enter>",
+            "aaa authorization exec default local<enter>",
+            "username admin privilege 15 role network-admin secret admin<enter><exit>"
           ],
-          "type": "virtualbox-veos",
+          "type": "virtualbox-ovf",
           "name" : "vEOS4",
           "source_path": "source/vEOS.ovf",
           "output_directory" : "vEOS4",
+          "export_opts" : [ "--iso" ],
+          "guest_additions_mode" : "disable",
+          "virtualbox_version_file" : "/tmp/",
           "ssh_username": "admin",
-          "vm_name":"vEOS-4",
+          "ssh_password": "admin",
+          "vm_name":"vEOS4",
           "vboxmanage": [
-              [ "modifyvm","{{.Name}}","--name","vEOS-4" ],
-              [ "modifyvm","{{.Name}}","--memory","2048" ],
+              [ "modifyvm","{{.Name}}","--name","vEOS4" ],
+              [ "modifyvm","{{.Name}}","--memory","{{user `ram`}}" ],
               [ "modifyvm","{{.Name}}","--cpus","1" ],
-              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
+              [ "modifyvm","{{.Name}}","--nic1","nat" ],
               [ "modifyvm","{{.Name}}","--nicpromisc1","allow-all" ],
-              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
               [ "modifyvm","{{.Name}}","--nic2","hostonly" ],
               [ "modifyvm","{{.Name}}","--nicpromisc2","allow-all" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter2","vboxnet4" ],
@@ -144,7 +188,11 @@
               [ "modifyvm","{{.Name}}","--hostonlyadapter4","vboxnet9" ],
               [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
           ],
-          "shutdown_command":"bash reload now"
+          "vboxmanage_post": [
+              [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
+              [ "modifyvm","{{.Name}}","--hostonlyadapter1","vboxnet2" ],
+              [ "modifyvm","{{.Name}}","--nicpromisc1","allow-all" ]
+          ]
       }
    ]
 }
