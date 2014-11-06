@@ -13,7 +13,7 @@ and assign the virtual networks as depicted in the diagram below.
  * **VirtualBox**The following procedure was tested using VirtualBox 4.3.12. **This does not work on Windows with 4.3.14**.
  * You will need to log into your Arista.com account to obtain the following files from https://www.arista.com/en/support/software-download:
     * Aboot-veos-2.0.8.iso
-    * vEOS-[release].vmdk (This can be any release of your choice. **Rename it vEOS.vmdk**
+    * vEOS-[release].vmdk. This can be any release of your choice. **Rename it vEOS.vmdk**)
  * **Virtual Networks**
      If you have not configured the vboxnets described in the diagram above, you can run ```./setup-vbox.sh``` to do this for you.
 
@@ -42,6 +42,7 @@ packer -v
 
 ##2a. Create vEOS Nodes for VirtualBox (Mac OSX and Linux)
 [I want to build vEOS nodes on Windows VirtualBox - skip to section](#2b-create-veos-nodes-for-virtualbox-windows)
+
 1. Retrieve the packer-veos configuration files [here](https://github.com/arista-eosplus/packer-veos/archive/master.zip) or use:
 <pre>
 git clone https://github.com/arista-eosplus/packer-veos.git
