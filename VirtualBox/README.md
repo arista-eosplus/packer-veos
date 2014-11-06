@@ -77,8 +77,9 @@ The vEOS.json file contains unique configuration for four vEOS nodes - vEOS-1/2/
       * ```packer build --only=vEOS2 vEOS.json```
       * ```packer build --only=vEOS3 vEOS.json```
       * ```packer build --only=vEOS4 vEOS.json```
->**NOTE:** There are times that the vEOS node does not boot properly and gets stuck at the 'starting udev.'  If this occurs, it is best to cancel (ctrl-c) the build and start again.
 5. You will see new directories created (vEOS1/2/3/4) each containing an .ovf, .vmdk and .iso (Aboot). Double-click on the OVF to import the VM into VirtualBox.
+
+>**NOTE:** There are times that the vEOS node does not boot properly and gets stuck at the 'starting udev.'  If this occurs, it is best to cancel (ctrl-c) the build and start again.
 
 
 ##2b. Create vEOS Nodes for VirtualBox (Windows)
@@ -116,5 +117,6 @@ The vEOS-windows.json file contains unique configuration for four vEOS nodes - v
       * ```packer build --only=vEOS2 vEOS-windows.json```
       * ```packer build --only=vEOS3 vEOS-windows.json```
       * ```packer build --only=vEOS4 vEOS-windows.json```
->**NOTE:** There are times that the vEOS node does not boot properly and gets stuck at the 'starting udev.'  If this occurs, it is best to cancel (ctrl-c) the build and start again.
 5. You will see new directories created, vEOS{1,2,3,4}, each containing an .ovf, .vmdk and .iso (Aboot). Double-click on the OVF to import the VM into VirtualBox.
+
+>**NOTE:** There are times that the vEOS node does not boot properly and gets stuck at the 'starting udev.'  If this occurs, it is best to cancel (ctrl-c) the build and start again.
