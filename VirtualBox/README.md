@@ -19,6 +19,7 @@ and assign the virtual networks as depicted in the diagram below.
 
  * **Virtual Networks**
      If you have not configured the vboxnets described in the diagram above, you can run ```./setup-vbox.sh``` to do this for you.
+ * **VBoxBuilder will export a VM, but will NOT import/register it in VirtualBox afterwards.** Please go to the newly created folders and double click the .ovf files in order to import the VMs into VirtualBox. 
 
 
 ##1. Install Packer
