@@ -45,7 +45,7 @@
               [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
               [ "modifyvm","{{.Name}}","--nicpromisc4","allow-all" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter4","VirtualBox Host-Only Ethernet Adapter #7" ],
-              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
+              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-vEOS.iso" ]
           ],
           "vboxmanage_post": [
               [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
@@ -94,7 +94,7 @@
               [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
               [ "modifyvm","{{.Name}}","--nicpromisc4","allow-all" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter4","VirtualBox Host-Only Ethernet Adapter #7" ],
-              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
+              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-vEOS.iso" ]
           ],
           "vboxmanage_post": [
               [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
@@ -142,7 +142,7 @@
               [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
               [ "modifyvm","{{.Name}}","--nicpromisc4","allow-all" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter4","VirtualBox Host-Only Ethernet Adapter #9" ],
-              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
+              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-vEOS.iso" ]
           ],
           "vboxmanage_post": [
               [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
@@ -190,7 +190,7 @@
               [ "modifyvm","{{.Name}}","--nic4","hostonly" ],
               [ "modifyvm","{{.Name}}","--nicpromisc4","allow-all" ],
               [ "modifyvm","{{.Name}}","--hostonlyadapter4","VirtualBox Host-Only Ethernet Adapter #9" ],
-              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-veos-2.0.8.iso" ]
+              [ "storageattach","{{.Name}}","--storagectl","IDE","--port","0","--device","1","--type","dvddrive","--medium","source/Aboot-vEOS.iso" ]
           ],
           "vboxmanage_post": [
               [ "modifyvm","{{.Name}}","--nic1","hostonly" ],
