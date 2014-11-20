@@ -15,7 +15,7 @@ and assign the virtual networks as depicted in the diagram below.
      * Aboot-[release].iso and **rename it Aboot-vEOS.iso**
      * vEOS-[release].vmdk and **rename it vEOS.vmdk**
 
-**NOTE:** You can use the any Aboot and vEOS release combination you want, but make sure that the two are compatible. If you are not sure the two files you indend to use are compatible, please contact support@arista.com.
+**NOTE:** You can use any Aboot and vEOS release combination you want, but make sure that the two are compatible. If you are not sure the two files you intend to use are compatible, please contact support@arista.com.
 
  * **Virtual Networks**
      If you have not configured the vmnets described in the diagram above, you can run ```sudo ./setup-fusion.sh``` to do this for you. Note that VMWare should be started when you run this command.  You can modify the script to only modify/create certain vmnets.

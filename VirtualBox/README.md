@@ -15,11 +15,11 @@ and assign the virtual networks as depicted in the diagram below.
      * Aboot-[release].iso and **rename it Aboot-vEOS.iso**
      * vEOS-[release].vmdk and **rename it vEOS.vmdk**
 
-**NOTE:** You can use the any Aboot and vEOS release combination you want, but make sure that the two are compatible. If you are not sure the two files you indend to use are compatible, please contact support@arista.com.
+**NOTE:** You can use any Aboot and vEOS release combination you want, but make sure that the two are compatible. If you are not sure the two files you intend to use are compatible, please contact support@arista.com.
 
  * **Virtual Networks**
      If you have not configured the vboxnets described in the diagram above, you can run ```./setup-vbox.sh``` to do this for you.
- * **VBoxBuilder will export a VM, but will NOT import/register it in VirtualBox afterwards.** Please go to the newly created folders and double click the .ovf files in order to import the VMs into VirtualBox. 
+ * **VBoxBuilder will export a VM, but will NOT import/register it in VirtualBox afterwards.** Please go to the newly created folders and double click the .ovf files in order to import the VMs into VirtualBox.
 
 
 ##1. Install Packer
