@@ -12,8 +12,11 @@ and assign the virtual networks as depicted in the diagram below.
 
  * **VMware Fusion Professional** - These packer scripts utilize functions that are only available in VMware Fusion Professional.
  * You will need to log into your Arista.com account to obtain the following files from https://www.arista.com/en/support/software-download:
-     * Aboot-veos-2.0.8.iso
-     * vEOS-[release].vmdk (This can be any release of your choice. **Rename it vEOS.vmdk**
+     * Aboot-[release].iso and **rename it Aboot-vEOS.iso**
+     * vEOS-[release].vmdk and **rename it vEOS.vmdk**
+
+**NOTE:** You can use the any Aboot and vEOS release combination you want, but make sure that the two are compatible. If you are not sure the two files you indend to use are compatible, please contact support@arista.com.
+
  * **Virtual Networks**
      If you have not configured the vmnets described in the diagram above, you can run ```sudo ./setup-fusion.sh``` to do this for you. Note that VMWare should be started when you run this command.  You can modify the script to only modify/create certain vmnets.
      EG ```VMNETS=(2 3 4 5 6 7 9 10 11)```.  If you are using VMware Workstation, you can quickly create these vmnets using the vmnetcfg utility.
@@ -61,7 +64,7 @@ cd packer-veos/VMware
           /source
               - vEOS.vmx
               - vEOS.vmdk
-              - Aboot-veos-2.0.8.iso
+              - Aboot-vEOS.iso
     ```
 4. The vEOS.json file contains unique configuration for four vEOS nodes - vEOS-1/2/3/4 as depicted above.
   * There are two command-line options that you can use to customize the build.

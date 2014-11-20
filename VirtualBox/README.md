@@ -12,10 +12,14 @@ and assign the virtual networks as depicted in the diagram below.
 
  * **VirtualBox**The following procedure was tested using VirtualBox 4.3.12. **This does not work on Windows with 4.3.14**.
  * You will need to log into your Arista.com account to obtain the following files from https://www.arista.com/en/support/software-download:
-    * Aboot-veos-2.0.8.iso
-    * vEOS-[release].vmdk. This can be any release of your choice. **Rename it vEOS.vmdk**)
+     * Aboot-[release].iso and **rename it Aboot-vEOS.iso**
+     * vEOS-[release].vmdk and **rename it vEOS.vmdk**
+
+**NOTE:** You can use the any Aboot and vEOS release combination you want, but make sure that the two are compatible. If you are not sure the two files you indend to use are compatible, please contact support@arista.com.
+
  * **Virtual Networks**
      If you have not configured the vboxnets described in the diagram above, you can run ```./setup-vbox.sh``` to do this for you.
+ * **VBoxBuilder will export a VM, but will NOT import/register it in VirtualBox afterwards.** Please go to the newly created folders and double click the .ovf files in order to import the VMs into VirtualBox. 
 
 
 ##1. Install Packer
@@ -61,7 +65,7 @@ cd packer-veos/Virtualbox
           /source
               - vEOS.ovf
               - vEOS.vmdk
-              - Aboot-veos-2.0.8.iso
+              - Aboot-vEOS.iso
     ```
 The vEOS.json file contains unique configuration for four vEOS nodes - vEOS-1/2/3/4 as depicted above.
   * There are two command-line options that you can use to customize the build.
@@ -101,7 +105,7 @@ cd packer-veos/Virtualbox
           /source
               - vEOS.ovf
               - vEOS.vmdk
-              - Aboot-veos-2.0.8.iso
+              - Aboot-vEOS.iso
     ```
 The vEOS-windows.json file contains unique configuration for four vEOS nodes - vEOS-1/2/3/4 as depicted above.
   * There are two command-line options that you can use to customize the build.

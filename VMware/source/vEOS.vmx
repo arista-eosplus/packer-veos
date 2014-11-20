@@ -49,7 +49,7 @@ floppy0.present ="FALSE"
 
 # Boot loader
 #ide0:0.present="TRUE"
-#ide0:0.fileName="../source/Aboot-veos-2.0.8.iso"
+#ide0:0.fileName="../source/Aboot-vEOS.iso"
 #ide0:0.deviceType="cdrom-image"
 ide0:0.devicetype = "cdrom-raw"
 ide0:0.filename = "auto detect"
@@ -57,7 +57,7 @@ ide0:0.present = "TRUE"
 scsi0.present = "TRUE"
 scsi0:0.present = "TRUE"
 scsi0:0.startConnected = "TRUE"
-scsi0:0.fileName = "../source/Aboot-veos-2.0.8.iso"
+scsi0:0.fileName = "../source/Aboot-vEOS.iso"
 scsi0:0.deviceType = "cdrom-image"
 
 # Internal flash
