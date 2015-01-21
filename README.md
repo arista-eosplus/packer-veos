@@ -24,7 +24,7 @@ The guides below will help you quickly turn up vEOS nodes running on VMware (Fus
 ###Prerequisites
 * You will need to log into your Arista.com account to obtain the following files from https://www.arista.com/en/support/software-download:
   * Aboot-[release].iso and **rename it Aboot-vEOS.iso**
-  * vEOS-[release].vmdk and **rename it vEOS.vmdk**
+  * vEOS-lab-[release].vmdk and **rename it vEOS.vmdk**
 * Python (this has been tested on Python 2.7.x)
   * [Get Python 2.7.x for Windows](https://www.python.org/downloads/windows/)
 * Git (technically optional but makes life easier)
