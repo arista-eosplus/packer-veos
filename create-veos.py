@@ -86,9 +86,10 @@ def main():
 
 
     parser = argparse.ArgumentParser(description="Automatically install the vEOS Demo Nodes")
-    parser.add_argument("hypervisor", choices=HYPERVISORS, help="Hypervisor to create VM in")
+    parser.add_argument("-H", "--hypervisor", required=True, choices=HYPERVISORS,
+                        help="Hypervisor to create VM in")
     parser.add_argument("-n", "--nodes", choices=VEOS_NODES, nargs='+',
-                        default=["all"], help="Desired vEOS nodes to create or ignore to build all")
+                        default=["all"], help="Space-separated list of nodes to build OR omit to build all")
     # parser.add_argument("-a", "--aboot", help="Location of Aboot ISO")
     # parser.add_argument("-d", "--disk", help="Location of vEOS VMDK")
     parser.add_argument("-b", "--boottime", default="2m30s",

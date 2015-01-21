@@ -63,50 +63,49 @@ cd packer-veos
 **Step 3.** Begin the build with the arguments of your choice
 <pre>
 arista:packer-veos arista$ ./create-veos.py --help
-usage: create-veos.py [-h]
+usage: create-veos.py [-h] -H {vmware,virtualbox}
 [-n {vEOS1,vEOS2,vEOS3,vEOS4} [{vEOS1,vEOS2,vEOS3,vEOS4} ...]]
 [-b BOOTTIME] [-N VMNAME]
-{vmware,virtualbox}
 
 Automatically install the vEOS Demo Nodes
 
-positional arguments:
-{vmware,virtualbox}   Hypervisor to create VM in
-
 optional arguments:
 -h, --help            show this help message and exit
--n {vEOS1,vEOS2,vEOS3,vEOS4} ..., --nodes {vEOS1,vEOS2,vEOS3,vEOS4} ...
-Desired vEOS nodes to create or ignore to build all
--b BOOTTIME, --boottime BOOTTIME
-This is the time Packer will wait before it sends
-commands over VNC
--N VMNAME, --vmname VMNAME
-The Virtual Machine name prefix
+
+-H {vmware,virtualbox}, --hypervisor {vmware,virtualbox} Hypervisor to create VM in
+
+-n {vEOS1,vEOS2,vEOS3,vEOS4} [{vEOS1,vEOS2,vEOS3,vEOS4} ...], --nodes {vEOS1,vEOS2,vEOS3,vEOS4} [{vEOS1,vEOS2,vEOS3,vEOS4} ...]
+Space-separated list of nodes to build OR omit option to build all
+E.G. -n vEOS1 vEOS3 vEOS4
+
+-b BOOTTIME, --boottime BOOTTIME This is the time Packer will wait before it sends commands over VNC
+
+-N VMNAME, --vmname VMNAME The Virtual Machine name prefix
 </pre>
 
 To build all of the vEOS nodes with VirtualBox:
 ```
-arista:packer-veos arista$ ./create-veos.py virtualbox
+arista:packer-veos arista$ ./create-veos.py -H virtualbox
 ```
 
 To build all of the vEOS nodes with VMware:
 ```
-arista:packer-veos arista$ ./create-veos.py vmware
+arista:packer-veos arista$ ./create-veos.py -H vmware
 ```
 
 To build specific nodes with VirtualBox:
 ```
-arista:packer-veos arista$ ./create-veos.py virtualbox -n vEOS1 vEOS3
+arista:packer-veos arista$ ./create-veos.py -H virtualbox -n vEOS1 vEOS3
 ```
 
 To build specific nodes with VirtualBox and lower the boot wait time:
 ```
-arista:packer-veos arista$ ./create-veos.py virtualbox -n vEOS1 vEOS3 -b 1m30s
+arista:packer-veos arista$ ./create-veos.py -H virtualbox -n vEOS1 vEOS3 -b 1m30s
 ```
 
 To build specific nodes with VirtualBox and define the VM name prefix:
 ```
-arista:packer-veos arista$ ./create-veos.py virtualbox -n vEOS1 vEOS3 -N testName
+arista:packer-veos arista$ ./create-veos.py -H virtualbox -n vEOS1 vEOS3 -N testName
 ```
 
 ###Post-Installation Tips
