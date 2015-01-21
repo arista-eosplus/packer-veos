@@ -73,13 +73,13 @@ def registerVbox(hyper, libDir, vmName, nodes):
             for n in VEOS_NODES:
                 vmPath = "%s-%s/%s-%s.ovf" % (vmName, n, vmName, n)
                 print "Importing VM: %s" % vmPath
-                subprocess.call([ cmd, "import", vmPath ], cwd=hyper)
+                subprocess.call([ cmd, "import", "--options", "keepallmacs", vmPath ], cwd=hyper)
             return True
         else:
             for n in nodes:
                 vmPath = "%s-%s/%s-%s.ovf" % (vmName, n, vmName, n)
                 print "Importing VM: %s" % vmPath
-                subprocess.call([ cmd, "import", vmPath ], cwd=hyper)
+                subprocess.call([ cmd, "import", "--options", "keepallmacs", vmPath ], cwd=hyper)
             return True
 
 def main():
