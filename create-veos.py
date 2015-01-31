@@ -99,6 +99,10 @@ def main():
 
     # Set install variables
     user = getpass.getuser()
+    if user == "root" and os.getenv("SUDO_USER") != "root":
+        print bcolors.FAIL, "ERROR: DO NOT RUN THIS SCRIPT WITH SUDO", bcolors.ENDC
+        exit()
+
     hyper = args.hypervisor
     nodes = args.nodes
     boottime = args.boottime
