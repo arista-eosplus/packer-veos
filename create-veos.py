@@ -17,7 +17,7 @@ VMDK_FN = "vEOS.vmdk"
 HYPERVISORS = ["vmware", "virtualbox"]
 VEOS_NODES = ["vEOS1", "vEOS2", "vEOS3", "vEOS4"]
 
-def createVM(hyper, hostOS, nodes, vmName, boottime, user):
+def createVM(hyper, hostOS, nodes, vmName, boottime, user, packerCmd):
     d = datetime.datetime.now()
     time = d.strftime("%Y%m%d_%H%M%S")
     if vmName:
@@ -41,11 +41,11 @@ def createVM(hyper, hostOS, nodes, vmName, boottime, user):
 
     try:
         if (hyper == "virtualbox" and hostOS=="windows"):
-            cmd = "packer build --parallel=false %s -var \'boot_time=%s\' -var \'name=%s\' vEOS-windows.json" % (OPTS, boottime, vmName)
+            cmd = "%s build --parallel=false %s -var \'boot_time=%s\' -var \'name=%s\' vEOS-windows.json" % (packerCmd, OPTS, boottime, vmName)
             print "Executing command:%s" % cmd
             rc = subprocess.call([ cmd ], shell=True, cwd=hyper)
         else:
-            cmd = "packer build --parallel=false %s -var \'boot_time=%s\' -var \'name=%s\' vEOS.json" % (OPTS, boottime, vmName)
+            cmd = "%s build --parallel=false %s -var \'boot_time=%s\' -var \'name=%s\' vEOS.json" % (packerCmd, OPTS, boottime, vmName)
             print "Executing command:%s" % cmd
             rc = subprocess.call([ cmd ], shell=True, cwd=hyper)
 
@@ -153,21 +153,16 @@ def main():
             libDir = find("C:\\", "VBoxManage.exe")
 
     # Test to see if Packer is installed
-    try:
-        subprocess.call(["packer -v"], shell=True)
-    except OSError as e:
-        if e.errno == os.errno.ENOENT:
-            print "Packer not found - install it"
-            installPacker(hostOS, hostArch)
-        else:
-            print "Something else went wrong"
-            raise
+    packerCmd = which("packer")
+    if not packerCmd:
+        print "Packer not found - install it"
+        packerCmd = installPacker(hostOS, hostArch)
 
     # Setup vnets then create VM
     if hyper == "virtualbox":
         if createVBoxNets(hostOS, hostArch, libDir):
             # Create the Virtual Machine
-            vmName = createVM(hyper, hostOS, nodes, vmName, boottime, user)
+            vmName = createVM(hyper, hostOS, nodes, vmName, boottime, user, packerCmd)
             if vmName:
                 if registerVbox(hyper, libDir, vmName, nodes):
                     print "Successfully created VM %s!" % vmName
@@ -176,7 +171,7 @@ def main():
     elif hyper == "vmware":
         if createVmNets(hostOS, hostArch, libDir):
             # Create the Virtual Machine
-            vmName = createVM(hyper, hostOS, nodes, vmName, boottime, user)
+            vmName = createVM(hyper, hostOS, nodes, vmName, boottime, user, packerCmd)
             if vmName:
                 print "Successfully created VM %s!" % vmName
                 exit(0)
