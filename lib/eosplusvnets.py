@@ -100,7 +100,7 @@ def installPacker(hostOS, hostArch):
     print "Updated path to be:%s" % os.environ["PATH"]
     try:
         print "Checking if install was successful by running 'packer -v'"
-        subprocess.call(["packer", "-v"])
+        subprocess.call(["packer -v"], shell=True)
     except OSError as e:
         if e.errno == os.errno.ENOENT:
             print "Packer installation failed"

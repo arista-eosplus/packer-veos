@@ -150,7 +150,7 @@ def main():
 
     # Test to see if Packer is installed
     try:
-        subprocess.call(["packer", "-v"])
+        subprocess.call(["packer -v"], shell=True)
     except OSError as e:
         if e.errno == os.errno.ENOENT:
             print "Packer not found - install it"
