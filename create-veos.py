@@ -39,15 +39,17 @@ def createVM(hyper, hostOS, nodes, vmName, boottime, user, packerCmd):
     else:
         OPTS = "--only=%s" % ','.join(nodes)
 
+    OPTS += "-var boot_time=%s -var name='%s'" % (boottime, vmName)
+
     try:
         if (hyper == "virtualbox" and hostOS=="windows"):
-            cmd = "%s build --parallel=false %s -var \'boot_time=%s\' -var \'name=%s\' vEOS-windows.json" % (packerCmd, OPTS, boottime, vmName)
+            cmd = "%s build --parallel=false %s vEOS-windows.json" % (packerCmd, OPTS)
             print "Executing command:%s" % cmd
-            rc = subprocess.call([ cmd ], shell=True, cwd=hyper)
+            rc = subprocess.call(cmd, shell=True, cwd=hyper)
         else:
-            cmd = "%s build --parallel=false %s -var \'boot_time=%s\' -var \'name=%s\' vEOS.json" % (packerCmd, OPTS, boottime, vmName)
+            cmd = "%s build --parallel=false %s vEOS.json" % (packerCmd, OPTS)
             print "Executing command:%s" % cmd
-            rc = subprocess.call([ cmd ], shell=True, cwd=hyper)
+            rc = subprocess.call(cmd, shell=True, cwd=hyper)
 
         print "Return code:%s" % rc
     except OSError as e:

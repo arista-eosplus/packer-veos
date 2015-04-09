@@ -84,15 +84,18 @@ def getUnzipped(url, dest, fn):
         print "Can't retrieve %r to %r: %s" % (url, name, e)
         raise
 
-    try:
-        print "Unzipping %s..." % name
-        with zipfile.ZipFile(name, "r") as z:
-            bin = os.path.join(dest, "packer-bin")
-            z.extractall(bin)
-    except zipfile.error, e:
-        print "Bad zipfile (from %r): %s" % (url, e)
-        raise
-    print "Unzipped successfully to %s" % bin
+    bin = os.path.join(dest, "packer-bin")
+    if not os.path.isdir(bin):
+        try:
+            print "Unzipping %s..." % name
+            with zipfile.ZipFile(name, "r") as z:
+                bin = os.path.join(dest, "packer-bin")
+                z.extractall(bin)
+        except zipfile.error, e:
+            print "Bad zipfile (from %r): %s" % (url, e)
+            raise
+        print "Unzipped successfully to %s" % bin
+
     return bin
 
 def installPacker(hostOS, hostArch):

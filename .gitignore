@@ -3,4 +3,8 @@
 *.vmxf
 *.vmsd
 *.log
-*.pyc
+*.py[o|c]
+**/packer_cache
+**/*-vmware/
+**/*-vbox/
+**/*-vEOS*/
