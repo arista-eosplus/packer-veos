@@ -38,6 +38,7 @@ def createVM(hyper, hostOS, nodes, vmName, boottime, user, packerCmd):
         OPTS = ""
     else:
         OPTS = "--only=%s" % ','.join(nodes)
+        OPTS += " "
 
     OPTS += "-var boot_time=%s -var name='%s'" % (boottime, vmName)
 
