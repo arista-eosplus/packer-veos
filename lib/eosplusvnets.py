@@ -186,7 +186,7 @@ def createVBoxNets(hostOS, hostArch, libDir):
                 vboxnet = "vboxnet%s" % net
                 ip = "172.16.%s.1" % network
                 subprocess.call([cmd, "hostonlyif", "ipconfig", vboxnet,
-                                 "-ip", ip, "-netmask", "255.255.255.0"])
+                                 "-ip", ip, "-netmask", "255.255.255.0"], shell=True)
         except OSError as e:
             if e.errno == os.errno.ENOENT:
                 print "vboxnet creation failed. Check output above"
@@ -205,7 +205,7 @@ def createVBoxNets(hostOS, hostArch, libDir):
             print "Disabling DHCP Servers"
             for srv in hostOnlyDHCPSrvs:
                 print "Disabling HostOnlyIf DHCP Server %s" % srv
-                subprocess.call([cmd, "dhcpserver", "remove", "--netname", srv])
+                subprocess.call([cmd, "dhcpserver", "remove", "--netname", srv], shell=True)
 
             return True
 
