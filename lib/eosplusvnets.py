@@ -18,8 +18,8 @@ import zipfile
 import getpass
 
 
-packerURL = "http://dl.bintray.com/mitchellh/packer"
-packerVersion = "0.7.5"
+packerURL = "https://releases.hashicorp.com/packer/0.10.0"
+packerVersion = "0.10.0"
 
 class bcolors:
     HEADER = '\033[95m'
